@@ -25,11 +25,11 @@
 
                         <!-- Entering the data-->
                         <div class="todo-input">
-                            <input type="text" placeholder="Enter the Data" class="form-control">
+                            <input id="todo-input-bar" type="text" placeholder="Enter the Data" class="form-control">
                         </div>
 
                         <!-- For saving data (button) -->
-                        <div class="save-todo btn btn-primary ">
+                        <div class="save-todo btn btn-primary disabled " id="save-todo">
                             Save
                         </div>
 
@@ -45,7 +45,7 @@
 
                 <!-- List part where the todo will be displayed -->
 
-                <div class="todo-data">
+                <div class="todo-data" id="todo-data">
 
                     <div class="row">
                         <div class="list-todo-heading d-flex flex-row justify-content-between">
@@ -54,83 +54,31 @@
                             <div class="todo-status">Status</div>
                             <div class="todo-actions">Actions</div>
                         </div>
+                        <hr> <!--  Horizontal line break-->
                     </div>
 
-                    <hr> <!--  Horizontal line break-->
+                    <div class="todo-data-list" id="todo-data-list">
+
+                    </div>
+
 
                     <!-- Actual todo -->
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="todo-item d-flex flex-row justify-content-between align-items-center">
                             <div class="todo-no">1.</div>
                             <div class="todo-detail ">Complete the action items on todos</div>
                             <div class="todo-status">In Progress</div>
-                            <div class="todo-actions">
+                            <div class="todo-actions d-flex justify-content-start gap-2">
                                 <button class="btn btn-success">Finished</button>
                                 <button class="btn btn-danger">Delete</button>
                             </div>
                         </div>
-                    </div>
-                    <hr>
+                        <hr>
+                    </div> -->
 
 
 
-                    <!-- Copy pasted the code. -->
-
-
-                    <!-- <div class="row">
-                        <div class="todo-item d-flex flex-row justify-content-between align-items-center">
-                            <div class="todo-no">2.</div>
-                            <div class="todo-detail ">Complete the JS part on  todos</div>
-                            <div class="todo-status">Not started</div>
-                            <div class="todo-actions">
-                                <button class="btn btn-success">Finished</button>
-                                <button class="btn btn-danger">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-
-
-                    <div class="row">
-                        <div class="todo-item d-flex flex-row justify-content-between align-items-center">
-                            <div class="todo-no">3.</div>
-                            <div class="todo-detail ">Have u learned punjabi ?!!!</div>
-                            <div class="todo-status">In Progress</div>
-                            <div class="todo-actions">
-                                <button class="btn btn-success">Finished</button>
-                                <button class="btn btn-danger">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-
-
-                    <div class="row">
-                        <div class="todo-item d-flex flex-row justify-content-between align-items-center">
-                            <div class="todo-no">4.</div>
-                            <div class="todo-detail ">Are u done with ecommerce project ?</div>
-                            <div class="todo-status">In Progress</div>
-                            <div class="todo-actions">
-                                <button class="btn btn-success">Finished</button>
-                                <button class="btn btn-danger">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-
-
-                    <div class="row">
-                        <div class="todo-item d-flex flex-row justify-content-between align-items-center">
-                            <div class="todo-no">5.</div>
-                            <div class="todo-detail ">Are u done with JS learning ?</div>
-                            <div class="todo-status">In Progress</div>
-                            <div class="todo-actions">
-                                <button class="btn btn-success">Finished</button>
-                                <button class="btn btn-danger">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                    <hr> -->
+                   
 
                 </div>
 

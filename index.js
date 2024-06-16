@@ -1,29 +1,121 @@
-console.log("Welcome to my todo app")
+console.log("Welcome to my todo app");
 
-let getTodoButton = document.getElementById('get-todo');
-// registration of event Listener and u can do multiple registrations
-getTodoButton.addEventListener('click',()=>{
-    console.log("Clicked") 
-})
+let todos = [];
 
+let todoDataList = document.getElementById("todo-data-list");
+let saveButton = document.getElementById("save-todo");
+let todoInputBar = document.getElementById("todo-input-bar");
 
+todoInputBar.addEventListener("keyup", function toggleSaveButton() {
+  let todoText = todoInputBar.value;
+  if (todoText.length == 0) {
+    if (saveButton.classList.contains("disabled")) return;
+    saveButton.classList.add("disabled");
+  } else if (saveButton.classList.contains("disabled")) {
+    saveButton.classList.remove("disabled");
+  }
+});
 
-// getTodoButton.addEventListener('click',handler())   // Ye tarika ganda hai call karne ka kyuki function mei kuch bhi doge toh wo sabko hi run kardega
+saveButton.addEventListener("click", function getTextAndAddTodo() {
+  let todoText = todoInputBar.value;
+  if (todoText.length == 0) return;
+  todos.push(todoText);
+  addTodo(todoText, todos.length);
+  todoInputBar.value = "";
+});
 
-// getTodoButton.addEventListener('mouseover',handler)  // isliye aese function name dedo bas 
-// function handler (){
-//     console.log("Clicked again!!!!!")
-// }
-
-// getTodoButton.addEventListener('mouseout',handler1)  
-// function handler1(){
-//     console.log("Haa aagya bahar")
-// }
-
-// getTodoButton.onclick = ()=>{
-//     console.log("HalloBall")
-// }
-
-function clickBtn(){
-    console.log("click")
+function removeTodo(event){
+    // console.log("clicked" , event.target.parentElement.parentElement.parentElement)
+    // event.target.parentElement.parentElement.parentElement.remove()
+    let deleteButtonPressed = event.target
+    let indexToBeRemoved = Number(deleteButtonPressed.getAttribute("todo-index"))
+    todos.splice(indexToBeRemoved,1)
+    todoDataList.innerHTML=''
+    todos.forEach((element,index)=>{
+           addTodo(element, index+1)     
+    })
+    
 }
+
+function addTodo(todoData, todoCount) {
+  console.log("called add todo");
+
+  let rowDiv = document.createElement("div");
+  let todoItem = document.createElement("div");
+  let todoNo = document.createElement("div");
+  let todoDetail = document.createElement("div");
+  let todoStatus = document.createElement("div");
+  let todoAction = document.createElement("div");
+  let finishedButton = document.createElement("button");
+  let deleteButton = document.createElement("button");
+  let hr = document.createElement("hr");
+
+  // adding Classes
+  rowDiv.classList.add("row");
+  todoItem.classList.add(
+    "todo-item",
+    "d-flex",
+    "flex-row",
+    "justify-content-between",
+    "align-items-center"
+  );
+  todoNo.classList.add("todo-no");
+  todoDetail.classList.add("todo-detail");
+  todoStatus.classList.add("todo-status");
+  todoAction.classList.add(
+    "todo-actions",
+    "d-flex",
+    "justify-content-start",
+    "gap-2"
+  );
+  finishedButton.classList.add("btn", "btn-success", "finished-todo");
+  deleteButton.classList.add("btn", "btn-danger", "delete-todo");
+deleteButton.setAttribute("todo-index" , todoCount-1)
+  deleteButton.onclick = removeTodo
+
+  todoNo.textContent = `${todoCount}`;
+  todoDetail.textContent = todoData; // sets the todo text sent from the input format
+  todoStatus.textContent = "In progress";
+  finishedButton.textContent = "Finished";
+  deleteButton.textContent = "Deleted";
+
+  todoAction.appendChild(finishedButton);
+  todoAction.appendChild(deleteButton);
+
+  todoItem.appendChild(todoNo);
+  todoItem.appendChild(todoDetail);
+  todoItem.appendChild(todoStatus);
+  todoItem.appendChild(todoAction);
+
+  rowDiv.appendChild(todoItem);
+  rowDiv.appendChild(hr);
+
+  todoDataList.appendChild(rowDiv);
+}
+
+// For reference
+// let getTodoButton = document.getElementById('get-todo');
+// // registration of event Listener and u can do multiple registrations
+// getTodoButton.addEventListener('click',()=>{
+//     console.log("Clicked")
+// })
+
+// // getTodoButton.addEventListener('click',handler())   // Ye tarika ganda hai call karne ka kyuki function mei kuch bhi doge toh wo sabko hi run kardega
+
+// // getTodoButton.addEventListener('mouseover',handler)  // isliye aese function name dedo bas
+// // function handler (){
+// //     console.log("Clicked again!!!!!")
+// // }
+
+// // getTodoButton.addEventListener('mouseout',handler1)
+// // function handler1(){
+// //     console.log("Haa aagya bahar")
+// // }
+
+// // getTodoButton.onclick = ()=>{
+// //     console.log("HalloBall")
+// // }
+
+// function clickBtn(){
+//     console.log("click")
+// }

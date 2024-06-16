@@ -21,6 +21,9 @@ body{
     flex-basis: 60%;
 }
 
+.list-todo-heading{
+margin-bottom: 1rem;
+}
 
 .list-todo-heading > div{
 font-weight: bold;
@@ -30,6 +33,7 @@ margin-top: 2rem;
 
 .todo-no{
     flex-basis: 3%;
+    color: white;
 }
 
 .todo-detail{
@@ -52,8 +56,5 @@ margin-top: 2rem;
 .todo-item {
     font-size: 1.3rem;
     color: #d9d5cb;
-}
-
-.todo-item .todo-no {
-    color: white;
+    margin-bottom: 1rem;
 }
