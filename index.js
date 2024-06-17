@@ -5,14 +5,12 @@ let todos = [];
 let todoDataList = document.getElementById("todo-data-list");
 let saveButton = document.getElementById("save-todo");
 let todoInputBar = document.getElementById("todo-input-bar");
-let getPendingTodosButton = document.getElementById('get-todos')
+let getPendingTodosButton = document.getElementById("get-todos");
 
-
-getPendingTodosButton.addEventListener('click', () => {
-  todos = todos.filter((todo) => todo.status != "Finished")
-  reRenderTodos()
-})
-
+getPendingTodosButton.addEventListener("click", () => {
+  todos = todos.filter((todo) => todo.status != "Finished");
+  reRenderTodos();
+});
 
 todoInputBar.addEventListener("keyup", function toggleSaveButton() {
   let todoText = todoInputBar.value;
@@ -90,16 +88,15 @@ function editTodo(event) {
 }
 
 function saveEditedTodo(event) {
-
-  let input = event.target
+  let input = event.target;
   let indexToEdit = Number(input.getAttribute("todo-index"));
   let detailDiv = document.querySelector(`div[todo-index = "${indexToEdit}"]`);
-  
+
   if (event.keyCode == 13) {
-    detailDiv.textContent = input.value
-    detailDiv.style.display = "block"
-    input.value = ""
-    input.type = "hidden"
+    detailDiv.textContent = input.value;
+    detailDiv.style.display = "block";
+    input.value = "";
+    input.type = "hidden";
   }
 }
 
@@ -141,7 +138,6 @@ function addTodo(todo, todoCount) {
   editButton.classList.add("btn", "btn-warning", "edit-todo");
   hiddenInput.classList.add("form-control", "todo-detail");
 
-
   // adding attributes
   finishedButton.setAttribute("todo-index", todoCount - 1);
   deleteButton.setAttribute("todo-index", todoCount - 1);
@@ -149,7 +145,7 @@ function addTodo(todo, todoCount) {
   editButton.setAttribute("todo-index", todoCount - 1);
   hiddenInput.setAttribute("todo-index", todoCount - 1);
   hiddenInput.type = "hidden";
-  
+
   // adding click listeners
   finishedButton.onclick = finishTodo;
   deleteButton.onclick = removeTodo;
@@ -162,8 +158,6 @@ function addTodo(todo, todoCount) {
   finishedButton.textContent = todo.finishedButtonText;
   deleteButton.textContent = "Delete";
   editButton.textContent = "Edit";
-
-
 
   // creating the div on DOM
 
